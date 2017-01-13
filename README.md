@@ -1,3 +1,14 @@
+# DOOL notes:
+
+### To get started with angular cli:
+- install angular cli using: npm install -g angular-cli
+- create new app using: ng new todo-app
+- create blank git repo on github
+- push your local todo-app to github following steps in this link: http://stackoverflow.com/questions/3311774/how-to-convert-existing-non-empty-directory-into-a-git-working-directory-and-pus
+
+
+
+
 # TodoAngular2
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.25.5.
