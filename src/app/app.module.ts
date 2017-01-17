@@ -7,6 +7,7 @@ import { firebaseConfig } from '../environments/firebase.config';
 
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { TaskService } from "../service/task-list.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { TaskListComponent } from './task-list/task-list.component';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
