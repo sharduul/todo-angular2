@@ -39,17 +39,15 @@ export class TaskService {
   //}
 
 
-  createNewLesson(courseId:string, lesson:any): Observable<any> {
+  createNewTask(task:any): Observable<any> {
 
-    const lessonToSave = Object.assign({}, lesson, {courseId});
+    const taskToSave = Object.assign({}, task, {});
 
-    const newLessonKey = this.sdkDb.child('lessons').push().key;
+    const newTaskKey = this.sdkDb.child('tasks').push().key;
 
     let dataToSave = {};
 
-    dataToSave["lessons/" + newLessonKey] = lessonToSave;
-    dataToSave[`lessonsPerCourse/${courseId}/${newLessonKey}`] = true;
-
+    dataToSave["tasks/" + newTaskKey] = taskToSave;
 
     return this.firebaseUpdate(dataToSave);
   }

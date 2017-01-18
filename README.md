@@ -7,6 +7,11 @@
 - push your local todo-app to github following steps in this link: http://stackoverflow.com/questions/3311774/how-to-convert-existing-non-empty-directory-into-a-git-working-directory-and-pus
 
 
+### ERROR resolutions:
+
+#### Cannot set property 'stack' of undefined
+Run command: npm install --save zone.js@0.7.4
+Checkout: https://github.com/angular/angular-cli/issues/3975
 
 
 # TodoAngular2
