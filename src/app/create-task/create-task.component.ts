@@ -13,7 +13,7 @@ export class CreateTaskComponent implements OnInit {
   form:FormGroup;
 
   @Input()
-  initialValue:any
+  initialValue:any;
 
   constructor(private fb: FormBuilder, private taskService: TaskService) {
     this.form = this.fb.group({

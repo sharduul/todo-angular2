@@ -11,15 +11,15 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngFor="let task of allTasks">
     <div class="col-lg-6">
-      <label></label>
+      <label>{{ task.name  }}</label>
     </div>
     <div class="col-lg-4">
-      <label></label>
+      <label>{{ task.priority }}</label>
     </div>
     <div class="col-lg-4">
-      <button>DONE</button>
+      <button (click)="markDone(task)">DONE</button>
     </div>
   </div>
 </div>

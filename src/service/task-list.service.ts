@@ -18,7 +18,7 @@ export class TaskService {
 
   }
 
-  findAllTasks():Observable<Task[]> {
+  findAllTasks():Observable<any[]> {
 
     return this.db.list('tasks')
       .do(console.log)
@@ -41,7 +41,7 @@ export class TaskService {
 
   createNewTask(task:any): Observable<any> {
 
-    const taskToSave = Object.assign({}, task, {});
+    const taskToSave = Object.assign({}, task, {  });
 
     const newTaskKey = this.sdkDb.child('tasks').push().key;
 
@@ -54,6 +54,8 @@ export class TaskService {
 
   firebaseUpdate(dataToSave) {
     const subject = new Subject();
+
+    console.log(dataToSave);
 
     this.sdkDb.update(dataToSave)
       .then(
@@ -72,13 +74,13 @@ export class TaskService {
   }
 
 
-  saveLesson(lessonId:string, lesson): Observable<any> {
+  saveTask(taskId:string, task): Observable<any> {
 
-    const lessonToSave = Object.assign({}, lesson);
-    delete(lessonToSave.$key);
+    const taskToSave = Object.assign({}, task, { });
+    delete(taskToSave.$key);
 
     let dataToSave = {};
-    dataToSave[`lessons/${lessonId}`] = lessonToSave;
+    dataToSave[`tasks/${taskId}`] = taskToSave;
 
     return this.firebaseUpdate(dataToSave);
 

@@ -9,7 +9,7 @@ import { Task } from '../../service/task';
 })
 export class TaskListComponent implements OnInit {
 
-  allTasks: Task[];
+  allTasks: any[];
 
   constructor(private taskService: TaskService) { }
 
@@ -19,6 +19,21 @@ export class TaskListComponent implements OnInit {
       .do(console.log)
       .subscribe(
         tasks => this.allTasks = tasks
+    )
+
+  }
+
+  markDone(task){
+
+    console.log(task);
+
+    this.taskService.saveTask(task.$key, task)
+      .subscribe(
+
+      () => {
+        alert("task marked done!!!");
+      },
+      error => console.log(error)
     )
 
   }

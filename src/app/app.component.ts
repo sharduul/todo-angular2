@@ -14,13 +14,13 @@ export class AppComponent {
   constructor(private af: AngularFire){
 
 
-    const tasks$ : FirebaseListObservable<any> = af.database.list('tasks');
-
-    tasks$.subscribe(
-
-      val => console.log(val)
-
-    );
+    //const tasks$ : FirebaseListObservable<any> = af.database.list('tasks');
+    //
+    //tasks$.subscribe(
+    //
+    //  val => console.log(val)
+    //
+    //);
 
 
 

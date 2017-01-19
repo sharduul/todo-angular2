@@ -1,6 +1,8 @@
 
 export class Task {
 
+  taskId: number;
+
 
   constructor(
     public $key:string,
@@ -11,6 +13,14 @@ export class Task {
     public dateDue: string,
     public priority: number,
     public status: boolean) {
+
+    //this.id = this.taskId = this.taskId + 1;
+    //this.name = "";
+    //this.description = "";
+    //this.dateCreated = "";
+    //this.dateDue = "";
+    //this.priority = 1;
+    //this.status = false;
 
   }
 
