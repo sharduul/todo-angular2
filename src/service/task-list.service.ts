@@ -1,5 +1,5 @@
 import {Injectable, Inject} from '@angular/core';
-import {Task} from "./task";
+import {ITask, Task} from "./task";
 import {AngularFireDatabase, FirebaseRef} from "angularfire2";
 import {Http} from "@angular/http";
 import {firebaseConfig} from "../environments/firebase.config";
@@ -18,11 +18,18 @@ export class TaskService {
 
   }
 
-  findAllTasks():Observable<any[]> {
+  // findAllTasks():Observable<any[]> {
+
+  //   return this.db.list('tasks')
+  //     .do(console.log)
+  //     .map(Task.fromJsonList);
+
+  // }
+
+  findAllTasks():Observable<ITask[]> {
 
     return this.db.list('tasks')
-      .do(console.log)
-      .map(Task.fromJsonList);
+      .do(console.log);
 
   }
 
@@ -55,7 +62,10 @@ export class TaskService {
   firebaseUpdate(dataToSave) {
     const subject = new Subject();
 
+    dataToSave = JSON.parse(JSON.stringify(dataToSave));
+
     console.log(dataToSave);
+
 
     this.sdkDb.update(dataToSave)
       .then(
@@ -74,16 +84,16 @@ export class TaskService {
   }
 
 
-  saveTask(taskId:string, task): Observable<any> {
+  saveTask(taskId:string, task:ITask): Observable<any> {
 
-    const taskToSave = Object.assign({}, task, { });
-    delete(taskToSave.$key);
+    //const taskToSave = Object.assign({}, task, { });
+    //delete(taskToSave.$key);
+    delete(task.$key);
 
     let dataToSave = {};
-    dataToSave[`tasks/${taskId}`] = taskToSave;
+    dataToSave[`tasks/${taskId}`] = task;
 
     return this.firebaseUpdate(dataToSave);
-
 
   }
 

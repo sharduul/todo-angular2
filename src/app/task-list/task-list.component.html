@@ -18,6 +18,9 @@
     <div class="col-lg-4">
       <label>{{ task.priority }}</label>
     </div>
+    <div class="col-lg-2">
+      <label>{{ task.status ? "Done" : "Incomplete" }}</label>
+    </div>
     <div class="col-lg-4">
       <button (click)="markDone(task)">DONE</button>
     </div>

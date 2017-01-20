@@ -16,7 +16,7 @@ export class TaskListComponent implements OnInit {
   ngOnInit() {
 
     this.taskService.findAllTasks()
-      .do(console.log)
+     // .do(console.log)
       .subscribe(
         tasks => this.allTasks = tasks
     )
@@ -26,6 +26,7 @@ export class TaskListComponent implements OnInit {
   markDone(task){
 
     console.log(task);
+    task.status = true;
 
     this.taskService.saveTask(task.$key, task)
       .subscribe(
