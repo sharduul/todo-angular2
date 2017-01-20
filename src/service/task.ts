@@ -6,17 +6,21 @@ export interface ITask {
   name: string;
   description: string;
   dateCreated: number;
-  priority: string;
+  priority: number;
   status: boolean;
 }
 
 export class Task implements ITask {
-  completed: boolean = false;
-  dateCreated: number = database['ServerValue']['TIMESTAMP'];
+  status: boolean = false;
+  dateCreated: number = +database['ServerValue']['TIMESTAMP'];
   name: string;
+  description: string;
+  priority: number;
 
-  constructor(name: string) {
+  constructor(name: string, description: string, priority: number) {
     this.name = name;
+    this.description = description;
+    this.priority = priority;
   }
 }
 

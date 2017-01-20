@@ -46,7 +46,7 @@ export class TaskService {
   //}
 
 
-  createNewTask(task:any): Observable<any> {
+  createNewTask(task:ITask): Observable<any> {
 
     const taskToSave = Object.assign({}, task, {  });
 
@@ -62,10 +62,8 @@ export class TaskService {
   firebaseUpdate(dataToSave) {
     const subject = new Subject();
 
+    // this is necessary to remove invalid javascript keys
     dataToSave = JSON.parse(JSON.stringify(dataToSave));
-
-    console.log(dataToSave);
-
 
     this.sdkDb.update(dataToSave)
       .then(

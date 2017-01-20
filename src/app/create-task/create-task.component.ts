@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TaskService } from '../../service/task-list.service';
-import { Task } from '../../service/task';
+import { ITask, Task } from '../../service/task';
 
 @Component({
   selector: 'create-task',
@@ -11,6 +11,7 @@ import { Task } from '../../service/task';
 export class CreateTaskComponent implements OnInit {
 
   form:FormGroup;
+  newTask:Task;
 
   @Input()
   initialValue:any;
@@ -36,8 +37,9 @@ export class CreateTaskComponent implements OnInit {
 
   save(form){
 
+    this.newTask = new Task(form.value.name, form.value.description, +form.value.priority);
 
-    this.taskService.createNewTask(form.value)
+    this.taskService.createNewTask(this.newTask)
         .subscribe(
       () => {
         alert("task created successfully!!!");
@@ -46,7 +48,6 @@ export class CreateTaskComponent implements OnInit {
       error => console.log(`error creating lesson ${error}`)
 
     )
-
 
   }
 
