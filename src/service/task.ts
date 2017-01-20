@@ -11,11 +11,13 @@ export interface ITask {
 }
 
 export class Task implements ITask {
+
   status: boolean = false;
-  dateCreated: number = +database['ServerValue']['TIMESTAMP'];
+  dateCreated: number = Math.floor(Date.now() / 1000);
   name: string;
   description: string;
   priority: number;
+
 
   constructor(name: string, description: string, priority: number) {
     this.name = name;
