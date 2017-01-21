@@ -12,7 +12,7 @@
   </div>
 
   <div class="row" *ngFor="let task of allTasks">
-    <div class="col-lg-4">
+    <div class="col-lg-2">
       <label>{{ task.name  }}</label>
     </div>
     <div class="col-lg-2">
@@ -23,6 +23,9 @@
     </div>
     <div class="col-lg-2">
       <label>{{ task.dateCreated }}</label>
+    </div>
+    <div class="col-lg-2">
+      <button (click)="deleteTask(task)">DELETE</button>
     </div>
     <div class="col-lg-2">
       <button (click)="markDone(task)">DONE</button>

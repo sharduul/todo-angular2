@@ -40,5 +40,21 @@ export class TaskListComponent implements OnInit {
   }
 
 
+  deleteTask(task){
+
+    console.log(task);
+
+    this.taskService.deleteTask(task.$key)
+      .subscribe(
+
+      () => {
+        alert("task deleted!!!");
+      },
+      error => console.log(error)
+    )
+
+  }
+
+
 
 }

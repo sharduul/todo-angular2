@@ -96,9 +96,9 @@ export class TaskService {
   }
 
 
-  deleteLesson(lessonId:string): Observable<any> {
+  deleteTask(taskId:string): Observable<any> {
 
-    const url = firebaseConfig.databaseURL + '/lessons/' + lessonId + '.json';
+    const url = firebaseConfig.databaseURL + '/tasks/' + taskId + '.json';
 
     return this.http.delete(url);
   }
