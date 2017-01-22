@@ -33,6 +33,23 @@ export class TaskService {
 
   }
 
+  filterTasks(queryStr:string):Observable<ITask[]> {
+
+    if(queryStr.length > 0){
+      return this.db.list('tasks', {
+        query: {
+          orderByChild: 'name',
+          equalTo: queryStr
+        }
+      })
+        .do(console.log);
+    }
+    else {
+      return this.findAllTasks();
+    }
+
+  }
+
   //findTaskById(id:string): Observable<Task> {
   //  return this.db.list('tasks', {
   //    query: {

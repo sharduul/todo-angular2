@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../service/task-list.service';
 import { Task } from '../../service/task';
+import { FormControl } from "@angular/forms";
+
 
 @Component({
   selector: 'task-list',
@@ -10,6 +12,7 @@ import { Task } from '../../service/task';
 export class TaskListComponent implements OnInit {
 
   allTasks: any[];
+  queryStr = new FormControl();
 
   constructor(private taskService: TaskService) { }
 
@@ -20,6 +23,19 @@ export class TaskListComponent implements OnInit {
       .subscribe(
         tasks => this.allTasks = tasks
     )
+
+    this.queryStr.valueChanges
+        .debounceTime(400)
+        .subscribe(
+          queryStr => this.taskService.filterTasks(queryStr)
+                        .subscribe(
+                          (tasks) => {
+                            console.log(tasks);
+                            this.allTasks = tasks;
+                          },
+                          error => console.log(error)
+                        )
+         );
 
   }
 
