@@ -99,6 +99,10 @@ export class TaskService {
 
       subject.next(response);
       subject.complete();
+
+    }, function(error){
+      subject.error(error);
+      subject.complete();
     });
 
     return subject.asObservable();
