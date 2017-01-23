@@ -50,17 +50,16 @@ export class TaskService {
 
   }
 
-  //findTaskById(id:string): Observable<Task> {
-  //  return this.db.list('tasks', {
-  //    query: {
-  //      orderByChild: 'id',
-  //      equalTo: id
-  //    }
-  //  }).filter(results => results && results.length > 0)
-  //    .map(results => Task.fromJson(results[0]))
-  //    .do(console.log);
-  //
-  //}
+  findTaskById(id:string): Observable<ITask> {
+   return this.db.list('tasks', {
+     query: {
+       orderByKey: true,
+       equalTo: id
+     }
+   }).filter(results => results && results.length > 0)
+     .do(console.log);
+
+  }
 
 
   createNewTask(task:ITask): Observable<any> {

@@ -1,8 +1,8 @@
 
 import { Route } from "@angular/router";
-import { AppComponent } from "./app.component";
 import { CreateTaskComponent } from "./create-task/create-task.component";
 import { ViewTaskComponent } from "./view-task/view-task.component";
+import { TaskListComponent } from "./task-list/task-list.component";
 
 export const routerConfig : Route[] = [
     {

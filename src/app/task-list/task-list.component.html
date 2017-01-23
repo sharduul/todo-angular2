@@ -13,7 +13,7 @@
 
   <div class="row" *ngFor="let task of allTasks">
     <div class="col-lg-2">
-      <label>{{ task.name  }}</label>
+      <h2><a [routerLink]="['/tasks/' + task.$key + '/view']">{{ task.name  }}</a></h2>
     </div>
     <div class="col-lg-2">
       <label>{{ task.priority }}</label>
