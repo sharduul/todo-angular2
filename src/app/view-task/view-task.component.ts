@@ -14,8 +14,8 @@ export class ViewTaskComponent implements OnInit {
 	taskId: string;
 
   constructor(private taskService: TaskService, 
-  				private router: Router,
-                private route:ActivatedRoute,) { }
+  				      private router: Router,
+                private route:ActivatedRoute) { }
 
   ngOnInit() {
 

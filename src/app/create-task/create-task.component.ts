@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { TaskService } from '../../service/task-list.service';
 import { ITask, Task } from '../../service/task';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'create-task',
@@ -16,7 +17,11 @@ export class CreateTaskComponent implements OnInit {
   @Input()
   initialValue:any;
 
-  constructor(private fb: FormBuilder, private taskService: TaskService) {
+  constructor(private fb: FormBuilder, 
+              private taskService: TaskService,
+              private router: Router,
+              private route:ActivatedRoute) {
+
     this.form = this.fb.group({
       name: ['', Validators.required],
       priority: ['', Validators.required],
@@ -41,9 +46,14 @@ export class CreateTaskComponent implements OnInit {
 
     this.taskService.createNewTask(this.newTask)
         .subscribe(
-      () => {
+      (task) => {
         alert("task created successfully!!!");
         form.reset();
+
+        console.log(task);
+
+        // navigate to the task details page.
+        //this.router.navigate(['/task', , 'view']);
       },
       error => console.log(`error creating lesson ${error}`)
 

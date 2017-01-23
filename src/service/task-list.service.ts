@@ -83,12 +83,18 @@ export class TaskService {
 
     this.sdkDb.update(dataToSave)
       .then(
-        val => {
+        (val) => {
+
+          console.log(val);
+
         subject.next(val);
         subject.complete();
 
       },
-        err => {
+        (err) => {
+
+          console.log(err);
+          
         subject.error(err);
         subject.complete();
       }
