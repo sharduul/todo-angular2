@@ -4,6 +4,7 @@ import {AngularFireDatabase, FirebaseRef} from "angularfire2";
 import {Http} from "@angular/http";
 import {firebaseConfig} from "../environments/firebase.config";
 import {Observable, Subject} from "rxjs/Rx";
+import * as _ from "lodash";
 
 
 @Injectable()
@@ -72,33 +73,33 @@ export class TaskService {
 
     dataToSave["tasks/" + newTaskKey] = taskToSave;
 
-    return this.firebaseUpdate(dataToSave);
+    let params = {};
+    params['url'] = `tasks.${newTaskKey}`;
+    params['key'] = newTaskKey;
+
+    return this.firebaseUpdate(dataToSave, params);
   }
 
-  firebaseUpdate(dataToSave) {
-    const subject = new Subject();
+  firebaseUpdate(dataToSave, params) {
+    var subject = new Subject();
 
     // this is necessary to remove invalid javascript keys
     dataToSave = JSON.parse(JSON.stringify(dataToSave));
 
-    this.sdkDb.update(dataToSave)
-      .then(
-        (val) => {
+    this.sdkDb.update(dataToSave);
 
-          console.log(val);
+    // catch the value after successful update and notify the observer
+    this.sdkDb.on('value', function(snap) {
 
-        subject.next(val);
-        subject.complete();
+      // create the response object from the object being saved
+      var response = Object.assign({}, _.get(snap.val(), params.url), {  });
 
-      },
-        (err) => {
+      // we need key to navigate to the view
+      response['$key'] = params.key;
 
-          console.log(err);
-          
-        subject.error(err);
-        subject.complete();
-      }
-    );
+      subject.next(response);
+      subject.complete();
+    });
 
     return subject.asObservable();
   }
@@ -113,7 +114,11 @@ export class TaskService {
     let dataToSave = {};
     dataToSave[`tasks/${taskId}`] = task;
 
-    return this.firebaseUpdate(dataToSave);
+    let params = {};
+    params['url'] = `tasks.${taskId}`;
+    params['key'] = taskId;
+
+    return this.firebaseUpdate(dataToSave, params);
 
   }
 

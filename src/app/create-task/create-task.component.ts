@@ -50,10 +50,8 @@ export class CreateTaskComponent implements OnInit {
         alert("task created successfully!!!");
         form.reset();
 
-        console.log(task);
-
         // navigate to the task details page.
-        //this.router.navigate(['/task', , 'view']);
+        this.router.navigate(['/tasks', task.$key , 'view']);
       },
       error => console.log(`error creating lesson ${error}`)
 

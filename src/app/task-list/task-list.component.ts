@@ -64,7 +64,7 @@ export class TaskListComponent implements OnInit {
       .subscribe(
 
       () => {
-        alert("task deleted!!!");
+        //alert("task deleted!!!");
       },
       error => console.log(error)
     )
