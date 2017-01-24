@@ -14,6 +14,12 @@ Run command: npm install --save zone.js@0.7.4
 Checkout: https://github.com/angular/angular-cli/issues/3975
 
 
+### Add LESS to your project
+Checkout here https://github.com/angular/angular-cli
+Run command:ng set defaults.styleExt less
+
+
+
 # TodoAngular2
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.25.5.
