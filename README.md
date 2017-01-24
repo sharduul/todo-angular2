@@ -6,6 +6,8 @@
 - create blank git repo on github
 - push your local todo-app to github following steps in this link: http://stackoverflow.com/questions/3311774/how-to-convert-existing-non-empty-directory-into-a-git-working-directory-and-pus
 
+### Reference apps git repo
+[Angular University Firebase app](https://github.com/angular-university/angular-firebase-app)
 
 ### ERROR resolutions:
 
