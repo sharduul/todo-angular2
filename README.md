@@ -16,7 +16,11 @@ Checkout: https://github.com/angular/angular-cli/issues/3975
 
 ### Add LESS to your project
 Checkout here https://github.com/angular/angular-cli
+
 Run command:ng set defaults.styleExt less
+
+For global LESS look at this
+http://stackoverflow.com/a/41839423/1902831
 
 
 
